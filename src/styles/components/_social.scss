@@ -1,0 +1,22 @@
+@use '../utilities/variables' as *;
+@use '../utilities/mixins' as *;
+@use '../utilities/placeholders' as *;
+
+.social-icons {
+  @extend %flex-center;
+
+  gap: 40px;
+
+  @include responsive(mobile) {
+    gap: 20px;
+  }
+
+  a {
+    color: $color-dark;
+    transition: $transition;
+
+    &:hover {
+      color: $color-accent;
+    }
+  }
+}

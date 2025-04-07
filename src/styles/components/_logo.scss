@@ -1,0 +1,31 @@
+@use '../utilities/variables' as *;
+@use '../utilities/mixins' as *;
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  &-img {
+    width: 60px;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &-text {
+    color: $color-accent;
+    font-family: $font-heading;
+    font-size: 3.2rem;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+
+    @include responsive(tablet) {
+      font-size: 2.5rem;
+    }
+
+    @include responsive(mobile) {
+      font-size: 2rem;
+    }
+  }
+}

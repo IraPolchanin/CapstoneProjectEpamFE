@@ -1,0 +1,50 @@
+@use '../utilities/variables' as *;
+@use '../utilities/mixins' as *;
+@use '../utilities/placeholders' as *;
+
+.header {
+  padding: 30px 0;
+  color: $color-white;
+  background-color: $color-dark;
+
+  @include responsive(mobile) {
+    padding: 20px 0;
+  }
+
+  &__content {
+    @extend %grid-center;
+
+    gap: 20px;
+    grid-template-columns: 250px auto;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    grid-column: 1/2;
+  }
+
+  &__nav {
+    grid-column: 2/-1;
+    justify-items: end;
+  }
+
+  &__mobile-menu {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    > i {
+      color: $color-white;
+      font-size: 32px;
+    }
+
+    @include responsive(tablet) {
+      display: block;
+    }
+
+    @include responsive(mobile) {
+      display: block;
+    }
+  }
+}

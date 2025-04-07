@@ -1,0 +1,145 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+%flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+%grid-center {
+  display: grid;
+  align-items: center;
+}
+
+%centered-svg {
+  svg {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    max-width: 100%;
+    transform: translateX(-50%);
+
+    @include responsive(tablet-lg) {
+      width: 80%;
+    }
+
+    @include responsive(tablet) {
+      width: 70%;
+    }
+
+    @include responsive(mobile) {
+      bottom: -30px;
+      width: 60%;
+    }
+  }
+}
+
+%form-field-styles {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid $color-light-gray;
+  border-radius: 4px;
+  font-size: 1.6rem;
+  outline: none;
+  transition: $transition;
+
+  @include responsive(mobile) {
+    padding: 10px 12px;
+    font-size: 1.4rem;
+  }
+
+  &:focus {
+    border-color: $color-accent;
+    box-shadow: 0 0 0 0.2rem rgba($color-accent, 0.2);
+    outline: none;
+  }
+
+  &::placeholder {
+    color: rgba($color-gray, 0.5);
+    font-size: 1.4rem;
+  }
+
+  &:focus::placeholder {
+    opacity: 0.7;
+  }
+}
+
+%section-block-title {
+  position: relative;
+  color: $color-dark;
+  font-family: $font-heading;
+  font-size: 2.4rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+
+  &::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: $color-accent;
+    content: '';
+  }
+}
+
+%card-title {
+  color: $color-dark;
+  font-family: $font-accent;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.2;
+
+  @include responsive(tablet) {
+    font-size: 2rem;
+  }
+
+  @include responsive(mobile) {
+    font-size: 1.6rem;
+  }
+}
+
+%card-subtitle {
+  color: $color-gray;
+  font-family: $font-main;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.5;
+
+  @include responsive(tablet) {
+    font-size: 1.6rem;
+  }
+
+  @include responsive(mobile) {
+    font-size: 1.4rem;
+  }
+}
+
+%card-text {
+  color: $color-gray;
+  font-size: 1.6rem;
+
+  @include responsive(tablet) {
+    font-size: 1.4rem;
+  }
+
+  @include responsive(mobile) {
+    font-size: 1.2rem;
+  }
+}
+
+%base-hero {
+  height: calc(100vh - var(--header-height));
+  min-height: 450px;
+
+  @include responsive(tablet) {
+    height: calc(100vh - var(--header-height));
+    min-height: 400px;
+  }
+
+  @include responsive(mobile) {
+    height: auto;
+    min-height: 30vh;
+  }
+}

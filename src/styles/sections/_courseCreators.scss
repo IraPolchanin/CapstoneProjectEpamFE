@@ -1,0 +1,195 @@
+@use 'sass:color';
+@use '../utilities/variables' as *;
+@use '../utilities/mixins' as *;
+@use '../utilities/placeholders' as *;
+
+.creators {
+  padding: 60px 0;
+  color: $color-white;
+  background-color: $color-dark;
+
+  @include responsive(mobile) {
+    padding: 4rem 0;
+  }
+
+  &__title {
+    color: $color-white;
+    margin-bottom: 60px;
+
+    @include responsive(mobile) {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__slider {
+    @extend %flex-center;
+
+    position: relative;
+    width: 100%;
+    padding: 0 60px;
+    margin-bottom: 40px;
+    overflow: hidden;
+
+    .slider-button {
+      @extend %flex-center;
+
+      position: absolute;
+      top: 50%;
+      width: 50px;
+      height: 50px;
+      padding: 15px;
+      color: $color-accent;
+      background-color: $color-gray;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 24px;
+      transform: translateY(-50%);
+      transition: $transition;
+      z-index: 2;
+
+      &:hover {
+        color: $color-white;
+        background: $color-accent;
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+        user-select: none;
+
+        &:hover {
+          background-color: $color-gray;
+        }
+      }
+
+      &--prev {
+        left: 10px;
+      }
+
+      &--next {
+        right: 10px;
+      }
+    }
+  }
+
+  &__container {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+    justify-content: flex-start;
+    scroll-behavior: smooth;
+    transition: transform 0.4s ease-in-out;
+
+    @include responsive(mobile) {
+      padding: 0 4rem;
+      gap: 14px;
+    }
+  }
+
+  .creator-card {
+    @extend %flex-center;
+
+    padding: 15px;
+    color: $color-light;
+    background-color: color.scale($color-dark, $lightness: 3%);
+    border-radius: 8px;
+    box-shadow:
+      0 4px 15px rgb(0 0 0 / 20%),
+      0 0 0 1px rgb(227 207 91 / 20%),
+      0 0 20px rgb(227 207 91 / 10%);
+    flex: 0 0 calc(25% - 1.5rem);
+    flex-direction: column;
+    font-size: 2rem;
+    gap: 15px;
+    justify-content: start;
+    min-height: 450px;
+    text-align: center;
+    transition: $transition;
+
+    @include responsive(tablet-lg) {
+      flex: 0 0 calc(30% - 1rem);
+      font-size: 1.8rem;
+      min-height: 400px;
+    }
+
+    @include responsive(mobile) {
+      padding: 10px;
+      flex: 0 0 100%;
+      font-size: 1.4rem;
+      min-height: 300px;
+    }
+
+    &:hover {
+      background-color: color.scale($color-dark, $alpha: -5%);
+      transform: translateY(-2px);
+    }
+
+    &__image {
+      width: 200px;
+      aspect-ratio: 1/1;
+      border-radius: $border-radius;
+      margin-bottom: 15px;
+      object-fit: cover;
+    }
+
+    &__role {
+      font-weight: 300;
+      margin-bottom: 20px;
+
+      @include responsive(mobile) {
+        margin-bottom: 10px;
+      }
+    }
+
+    &__link {
+      display: inline-block;
+      color: $color-accent;
+      border-bottom: 2px solid transparent;
+      font-weight: 500;
+      margin-top: auto;
+      text-decoration: none;
+      transition: $transition;
+
+      &:hover {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+    min-height: 20px;
+    text-align: center;
+  }
+
+  .pagination-dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    background-color: $color-gray;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: $transition;
+
+    &:hover:not(.active) {
+      outline: 1px solid $color-accent;
+      outline-offset: 1px;
+    }
+
+    &.active {
+      background-color: $color-accent;
+    }
+  }
+
+  .pagination-ellipsis {
+    padding: 0 0.5rem;
+    color: $color-gray;
+    user-select: none;
+  }
+}

@@ -1,0 +1,102 @@
+@use '../utilities/variables' as *;
+@use '../utilities/mixins' as *;
+
+.gallery-cards__container {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  margin-bottom: 3rem;
+}
+
+.course-card {
+  display: flex;
+  background: $color-white;
+  border-radius: $border-radius;
+  box-shadow: 0 4px 15px rgb(0 0 0 / 8%);
+  flex-direction: column;
+  overflow: hidden;
+  transition: $transition;
+
+  &-link {
+    display: block;
+    color: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    transition: $transition;
+
+    &:hover {
+      border-radius: $border-radius;
+      box-shadow:
+        0 0 0 2px $color-accent,
+        2px 2px 100px 10px rgba($color-accent, 0.3);
+      transform: translateY(-2px);
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 2px $color-accent;
+      outline: none;
+    }
+  }
+
+  .course-image {
+    width: 100%;
+    height: 300px;
+    border-bottom: 3px solid $color-dark;
+    object-fit: cover;
+  }
+
+  .course-info {
+    display: flex;
+    padding: 1.5rem;
+    flex: 1;
+    flex-direction: column;
+
+    .course-title {
+      color: $color-dark;
+      font-family: $font-accent;
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .course-instructor {
+      color: $color-gray;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .course-description {
+      margin: 0.8rem 0;
+      flex: 1;
+      line-height: 1.5;
+    }
+
+    .course-meta {
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      gap: 1rem;
+      margin-top: 1rem;
+
+      span {
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+
+        i {
+          color: $color-dark;
+        }
+      }
+    }
+
+    .course-price {
+      color: $color-accent;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-top: 1rem;
+    }
+
+    .course-promo {
+      display: none;
+    }
+  }
+}

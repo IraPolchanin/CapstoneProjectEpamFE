@@ -1,0 +1,143 @@
+@use '../utilities/variables' as *;
+@use '../utilities/mixins' as *;
+
+.guide {
+  position: relative;
+  text-align: center;
+
+  &__content {
+    margin: 0 auto;
+  }
+
+  &__title {
+    position: relative;
+    margin: 0 0 40px;
+    color: $color-darkest;
+
+    @include responsive(mobile) {
+      margin: 0 0 30px;
+    }
+  }
+
+  &__subtitle {
+    position: relative;
+    margin-bottom: 20px;
+
+    @include responsive(mobile) {
+      margin-bottom: 15px;
+    }
+  }
+
+  &__note {
+    display: block;
+    color: $color-gray;
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    opacity: 0.8;
+
+    @include responsive(tablet) {
+      margin-bottom: 30px;
+    }
+
+    @include responsive(mobile) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__container {
+    display: flex;
+    margin: 0 auto 60px;
+    padding: 0 20px;
+    align-items: stretch;
+    gap: 30px;
+    justify-content: space-between;
+
+    @include responsive(tablet) {
+      padding: 40px 0;
+      background-image: url('../assets/guide.jpeg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    @include responsive(mobile) {
+      padding: 30px 0;
+      background-color: $color-white;
+      background-image: none;
+    }
+  }
+
+  &__image {
+    flex: 1;
+    max-width: 400px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    @include responsive(tablet) {
+      display: none;
+    }
+  }
+
+  &__form {
+    @include form-variant(
+      $bg-color: $color-white-transparent,
+      $label-color: $color-dark,
+      $text-color: $color-darkest
+    );
+
+    flex: 1;
+
+    .form-group {
+      position: relative;
+      margin-bottom: 10px;
+    }
+
+    .field-error {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      display: block;
+      color: $color-error;
+      font-size: 1.2rem;
+      margin-top: 2px;
+      opacity: 1;
+      z-index: 10;
+    }
+
+    &-button {
+      align-self: center;
+      margin-top: 20px;
+    }
+  }
+
+  &__social {
+    &-title {
+      position: relative;
+      margin: 0 0 40px;
+      color: $color-darkest;
+    }
+
+    &-subtitle {
+      font-size: 1.6rem;
+      margin-bottom: 15px;
+    }
+
+    &-link {
+      font-size: 4rem;
+
+      @include responsive(tablet) {
+        font-size: 3rem;
+      }
+
+      @include responsive(mobile) {
+        font-size: 2.5rem;
+      }
+    }
+  }
+}

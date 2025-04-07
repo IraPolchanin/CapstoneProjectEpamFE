@@ -1,0 +1,88 @@
+@use 'sass:color';
+@use '../utilities/variables' as *;
+@use '../utilities/mixins' as *;
+@use '../components/button' as btn;
+
+.pagination {
+  &__buttons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 40px;
+
+    @include responsive(tablet) {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__numbers {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  &__button {
+    @include btn.btn-styles;
+
+    width: 40px;
+    height: 40px;
+    background-color: $color-white;
+    border-color: $color-light-gray;
+    font-size: 24px;
+
+    @include responsive(tablet-lg) {
+      width: 30px;
+      height: 30px;
+    }
+
+    &--number {
+      font-size: 16px;
+
+      @include responsive(tablet-lg) {
+        width: 30px;
+        height: 30px;
+      }
+
+      &.active {
+        background-color: $color-accent-light;
+      }
+    }
+
+    &:disabled {
+      &:hover {
+        background-color: $color-white;
+      }
+    }
+  }
+
+  &__load-more {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 80px;
+
+    @include responsive(tablet) {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__load-button {
+    @include btn.btn-styles;
+
+    display: flex;
+    align-items: center;
+    background-color: $color-white;
+    border-color: $color-white;
+    gap: 0.5rem;
+    text-transform: uppercase;
+
+    &:disabled {
+      &:hover {
+        background-color: $color-white;
+      }
+    }
+  }
+
+  &__load-icon {
+    font-size: 32px;
+  }
+}

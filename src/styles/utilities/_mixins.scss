@@ -1,0 +1,42 @@
+@use './variables' as *;
+
+@mixin responsive($breakpoint) {
+  @if $breakpoint == tablet-lg {
+    @media (width <= 992px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == tablet {
+    @media (width <= 768px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == mobile {
+    @media (width <= 480px) {
+      @content;
+    }
+  }
+}
+
+@mixin form-variant(
+  $bg-color,
+  $label-color: $color-dark,
+  $text-color: $color-darkest,
+  $box-shadow: $box-shadow
+) {
+  background-color: $bg-color;
+  box-shadow: $box-shadow;
+
+  .form-group {
+    label {
+      color: $label-color;
+    }
+
+    .form-field,
+    textarea {
+      color: $text-color;
+    }
+  }
+}

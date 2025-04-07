@@ -1,0 +1,122 @@
+@use '../utilities/variables' as *;
+@use '../utilities/mixins' as *;
+
+.nav {
+  &__link {
+    color: inherit;
+    font-size: 1.6rem;
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: $transition;
+
+    &:hover {
+      color: $color-accent;
+      text-decoration: underline;
+    }
+
+    &.active {
+      color: $color-accent;
+    }
+  }
+
+  &__item {
+    position: relative;
+    list-style: none;
+
+    &--active > .nav__link {
+      color: $color-accent;
+    }
+
+    .submenu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      display: none;
+      width: max-content;
+      padding: 10px;
+      background: $color-dark;
+      list-style: none;
+
+      .nav__link {
+        display: block;
+        padding: 5px 10px;
+        font-size: 1.4rem;
+      }
+
+      &.show {
+        display: flex;
+        flex-direction: column;
+        gap: 2em;
+        padding-top: 25px;
+        z-index: 5;
+
+        > li:not(:last-child) {
+          border-bottom: 1px solid $color-white-transparent-light;
+          margin-bottom: 16px;
+        }
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    margin: 0;
+    align-items: center;
+    gap: 40px;
+
+    @include responsive(tablet) {
+      display: none;
+    }
+
+    @include responsive(mobile) {
+      display: none;
+    }
+
+    &.open {
+      position: fixed;
+      display: flex;
+      width: 100%;
+      height: calc(100vh - 140px);
+      padding: 20px;
+      background: $color-dark;
+      flex-direction: column;
+      inset: 140px 0 0;
+      overflow-y: auto;
+      z-index: 1000;
+
+      @include responsive(mobile) {
+        top: 120px;
+        height: calc(100vh - 120px);
+      }
+
+      .nav__item {
+        width: 100%;
+        padding: 15px 0;
+        border-bottom: 1px solid $color-white-transparent-light;
+
+        > .nav__link {
+          display: block;
+          width: 100%;
+          color: inherit;
+          font-size: 1.8rem;
+          text-decoration: none;
+        }
+
+        .submenu {
+          position: static;
+          display: none;
+          width: 100%;
+          padding: 10px 0 0 20px;
+          border: none;
+
+          &.show {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,92 @@
+@use '../utilities/variables' as *;
+@use '../utilities/mixins' as *;
+@use '../utilities/placeholders' as *;
+@use 'sass:color';
+
+.form {
+  display: flex;
+  margin: 0 auto;
+  padding: 32px;
+  border-radius: 8px;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 800px;
+
+  @include responsive(tablet) {
+    margin: 0 auto;
+    padding: 24px;
+    gap: 20px;
+    max-width: 400px;
+  }
+
+  @include responsive(mobile) {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  &-row {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+
+    @include responsive(tablet) {
+      gap: 14px;
+    }
+
+    @include responsive(mobile) {
+      gap: 10px;
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &-group {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 10px;
+
+    label {
+      display: block;
+      font-size: 1.6rem;
+      font-weight: 600;
+      line-height: 1.5;
+      margin-bottom: 8px;
+
+      @include responsive(mobile) {
+        font-size: 1.6rem;
+      }
+    }
+
+    .form-field,
+    textarea {
+      @extend %form-field-styles;
+
+      color: $color-darkest;
+      background-color: $color-white;
+      border: 1px solid $color-light-gray;
+      transition: $transition;
+
+      &::placeholder {
+        color: $color-gray;
+      }
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+  }
+
+  .field-error {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: block;
+    color: $color-error;
+    font-size: 1.2rem;
+    min-height: 1.2em;
+    opacity: 1;
+    transform: translateY(3px);
+  }
+}

@@ -1,0 +1,41 @@
+@use '../utilities/variables' as *;
+@use '../utilities/mixins' as *;
+
+.footer {
+  padding: 20px 0;
+  color: $color-white;
+  background: $color-dark;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.6;
+  text-align: center;
+
+  &__content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__email {
+    color: inherit;
+    text-decoration: none;
+    transition: $transition;
+
+    &:hover {
+      color: $color-accent;
+      text-decoration: underline;
+    }
+  }
+
+  &__link {
+    color: $color-light;
+    text-decoration: none;
+    transition: $transition;
+
+    &:hover {
+      color: $color-accent;
+      text-decoration: underline;
+    }
+  }
+}
