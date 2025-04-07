@@ -54,7 +54,7 @@
 
     @include responsive(tablet) {
       padding: 40px 0;
-      background-image: url('../assets/guide.jpeg');
+      background-image: url('/assets/guide.jpeg');
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
