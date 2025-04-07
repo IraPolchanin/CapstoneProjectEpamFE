@@ -1,4 +1,4 @@
-import{f as n,g as l,c as o}from"./main-DpecW-iy.js";async function p(){try{const e=s();e||i();const{courses:t}=await n(),a=d(t,e);a||i(),c(a)}catch(e){console.error("Error loading course data:",e),i()}}function s(){return new URLSearchParams(window.location.search).get("courseId")}function i(){window.location.href="../index.html"}function d(e,t){return e.find(a=>a.id===parseInt(t))}function c(e){r(e),_(e),u(e.instructor)}function r(e){const t=document.getElementById("detailedHeroContent");t&&(t.innerHTML=`
+import{f as n,g as l,c as o}from"./main-DRmgftzE.js";async function p(){try{const e=s();e||i();const{courses:t}=await n(),a=d(t,e);a||i(),c(a)}catch(e){console.error("Error loading course data:",e),i()}}function s(){return new URLSearchParams(window.location.search).get("courseId")}function i(){window.location.href="../index.html"}function d(e,t){return e.find(a=>a.id===parseInt(t))}function c(e){r(e),_(e),u(e.instructor)}function r(e){const t=document.getElementById("detailedHeroContent");t&&(t.innerHTML=`
     <div class="detailed-hero__image-container">
       <img src="${e.image}" alt="${e.title}" class="detailed-hero__image">
     </div>
