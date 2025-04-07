@@ -1,6 +1,6 @@
-import{f as n,g as l,c as o}from"./main-DRmgftzE.js";async function p(){try{const e=s();e||i();const{courses:t}=await n(),a=d(t,e);a||i(),c(a)}catch(e){console.error("Error loading course data:",e),i()}}function s(){return new URLSearchParams(window.location.search).get("courseId")}function i(){window.location.href="../index.html"}function d(e,t){return e.find(a=>a.id===parseInt(t))}function c(e){r(e),_(e),u(e.instructor)}function r(e){const t=document.getElementById("detailedHeroContent");t&&(t.innerHTML=`
+import{f as l,g as s,c as o}from"./main-D3I74eyC.js";async function p(){try{const e=d();e||i();const{courses:t}=await l(),a=c(t,e);a||i(),r(a)}catch(e){console.error("Error loading course data:",e),i()}}function d(){return new URLSearchParams(window.location.search).get("courseId")}function i(){window.location.href="../index.html"}function c(e,t){return e.find(a=>a.id===parseInt(t))}function r(e){_(e),u(e),m(e.instructor)}function _(e){const t=document.getElementById("detailedHeroContent");if(!t)return;const a="/CapstoneProjectEpamFE/",n=e.image.startsWith("/")?`${a}${e.image.slice(1)}`:`${a}${e.image}`;t.innerHTML=`
     <div class="detailed-hero__image-container">
-      <img src="${e.image}" alt="${e.title}" class="detailed-hero__image">
+      <img src="${n}" alt="${e.title}" class="detailed-hero__image">
     </div>
     <div class="detailed-hero__text-content">
       <h2 class="section__title detailed-hero__title">${e.title}</h2>
@@ -11,7 +11,7 @@ import{f as n,g as l,c as o}from"./main-DRmgftzE.js";async function p(){try{cons
         <span class="detailed-hero__meta-item"><i class="fas fa-tag"></i> ${e.topic}</span>
       </div>
     </div>
-  `)}function _(e){const t=document.getElementById("detailedMainContent");if(!t)return;t.innerHTML=`
+  `}function u(e){const t=document.getElementById("detailedMainContent");if(!t)return;t.innerHTML=`
     <div class="detailed-content__block">
       <h2 class="detailed-content__block-title detailed-content__block-title--main" >Course Description</h2>
       <p class="detailed-content__block-text">${e.promotionalMessage}</p>
@@ -51,7 +51,7 @@ import{f as n,g as l,c as o}from"./main-DRmgftzE.js";async function p(){try{cons
     <div class="detailed__enrollment">
       <div class="detailed__enrollment-price">${e.price} ${e.currency}</div>
       <div class="detailed__enrollment-rating">
-        ${l(e.rating)}
+        ${s(e.rating)}
         <span class="detailed__enrollment-rating-value">${e.rating}/5</span>
       </div>
       <button class="btn detailed__enrollment-button">Enroll Now</button>
@@ -60,7 +60,7 @@ import{f as n,g as l,c as o}from"./main-DRmgftzE.js";async function p(){try{cons
         <h2>Enroll Now</h2>
         <p>Please visit our contact form and fill it out – our manager will contact you shortly.</p>
         <a href="contacts.html#contactForm" class="popup-link">Go to Contact Form</a>
-      `)})}function u(e){const t=document.getElementById("detailedInstructorCard");t&&(t.innerHTML=`
+      `)})}function m(e){const t=document.getElementById("detailedInstructorCard");t&&(t.innerHTML=`
       <img src="${e.image}" alt="${e.name}" class="detailed-instructor__card-image">
       <div class="detailed-instructor__card-details">
         <h3 class="detailed-instructor__card-name">${e.name}</h3>
