@@ -7,7 +7,7 @@ export function renderCreators(courses) {
   container.innerHTML = '';
   paginationContainer.innerHTML = '';
 
-  const baseUrl = import.meta.env.BASE_URL;
+  const baseUrl = import.meta.env.BASE_URL || '/';
 
   courses.forEach((course) => {
     const { instructor, id: courseId } = course;
@@ -16,9 +16,13 @@ export function renderCreators(courses) {
 
     creatorCard.classList.add('creator-card');
 
+    const fixedImagePath = image.startsWith('/')
+      ? `${baseUrl}${image.slice(1)}`
+      : `${baseUrl}${image}`;
+
     creatorCard.innerHTML = `
       <img
-        src="${image}"
+        src="${fixedImagePath}"
         alt="${name}"
         class="creator-card__image"
       >

@@ -88,11 +88,19 @@ export function setupGallery(courses) {
   function createCourseCard(course) {
     const cardLink = document.createElement('a');
     cardLink.classList.add('course-card-link');
-    cardLink.href = `./courseDetail.html?courseId=${course.id}`;
+    const baseUrl = import.meta.env.BASE_URL || '/';
+
+    cardLink.href = `${baseUrl}pages/courseDetail.html?courseId=${course.id}`;
+
     const card = document.createElement('div');
     card.classList.add('course-card');
+
+    const fixedImagePath = course.image.startsWith('/')
+      ? `${baseUrl}${course.image.slice(1)}`
+      : `${baseUrl}${course.image}`;
+
     card.innerHTML = `
-    <img class="course-card-image" src="${course.image}" alt="${course.title}" width="300" height="300" loading="lazy">
+    <img class="course-card-image" src="${fixedImagePath}" alt="${course.title}" width="300" height="300" loading="lazy">
     <div class="course-card-info">
       <h2 class="course-card-title">${course.title}</h2>
       <p class="course-card-instructor">By: ${course.instructor.role} · ${course.instructor.name} </p>

@@ -41,9 +41,15 @@ function renderHeroSection(course) {
   const hero = document.getElementById('detailedHeroContent');
   if (!hero) return;
 
+  const baseUrl = import.meta.env.BASE_URL || '/';
+
+  const fixedImagePath = course.image.startsWith('/')
+    ? `${baseUrl}${course.image.slice(1)}`
+    : `${baseUrl}${course.image}`;
+
   hero.innerHTML = `
     <div class="detailed-hero__image-container">
-      <img src="${course.image}" alt="${course.title}" class="detailed-hero__image">
+      <img src="${fixedImagePath}" alt="${course.title}" class="detailed-hero__image">
     </div>
     <div class="detailed-hero__text-content">
       <h2 class="section__title detailed-hero__title">${course.title}</h2>
@@ -125,8 +131,14 @@ function renderInstructorInfo(instructor) {
   const instructorSection = document.getElementById('detailedInstructorCard');
   if (!instructorSection) return;
 
+  const baseUrl = import.meta.env.BASE_URL || '/';
+
+  const fixedImagePath = instructor.image.startsWith('/') 
+    ? `${baseUrl}${instructor.image.slice(1)}` 
+    : `${baseUrl}${instructor.image}`;
+
   instructorSection.innerHTML = `
-      <img src="${instructor.image}" alt="${instructor.name}" class="detailed-instructor__card-image">
+      <img src="${fixedImagePath}" alt="${instructor.name}" class="detailed-instructor__card-image">
       <div class="detailed-instructor__card-details">
         <h3 class="detailed-instructor__card-name">${instructor.name}</h3>
         <p class="detailed-instructor__card-role">${instructor.role}</p>
